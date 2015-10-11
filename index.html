@@ -1,20 +1,13 @@
 <html>
   <head>
     <title>Reddit Clone - MEAN Stack</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script src="app.js"></script>
   </head>
 
   <body ng-app="redditClone" ng-controller="MainCtrl">
-    <div ng-repeat="post in posts">
-      {{post}}
+    <div ng-repeat="post in posts | orderBy: 'upvotes'">
+      {{post.title}} - upvotes: {{post.upvotes}}
     </div>
   </body>
-
-
-
-
-
-
-
 </html>
