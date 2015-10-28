@@ -3,16 +3,24 @@
     <title>Reddit Clone - MEAN Stack</title>
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
     <script src="app.js"></script>
     <style> .glyphicon-thumbs-up { cursor:pointer } </style>
   </head>
 
-  <body ng-app="redditClone" ng-controller="MainCtrl">
+  <script type="ng-template" id="/home.html">
+    <div class="page-header">
+      <h1>Reddit Clone - MEAN Stack</h1>
+    </div>
+
+
+  </script>
+
+  <body ng-app="redditClone">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <div class="page-header">
-          Reddit Clone - MEAN Stack
-        </div>
+
+          <ui-view></ui-view>
 
         <div ng-repeat="post in posts | orderBy: '-upvotes'">
           <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(post)"></span>

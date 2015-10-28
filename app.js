@@ -1,4 +1,4 @@
-var app = angular.module('redditClone', []);
+var app = angular.module('redditClone', ['ui.router']);
 
 app.factory('posts', [function(){
   var o = {
@@ -7,6 +7,21 @@ app.factory('posts', [function(){
   return o;
   $scope.posts = posts.posts;
 }]);
+
+app.config([
+  '$stateProvider',
+  '$urlRouterProvider',
+  function($stateProvider, $urlRouterProvider){
+
+    $stateProvider.state(
+      'home', {
+        url: '/home',
+        templateUrl: '/home.html',
+        controller: 'MainCtrl'
+      });
+
+    $urlRouterProvider.otherwise('home');
+  }]);
 
 app.controller('MainCtrl', [
   '$scope',
