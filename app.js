@@ -1,8 +1,17 @@
 var app = angular.module('redditClone', []);
 
+app.factory('posts', [function(){
+  var o = {
+    posts: []
+  };
+  return o;
+  $scope.posts = posts.posts;
+}]);
+
 app.controller('MainCtrl', [
   '$scope',
-  function($scope){
+  'posts',
+  function($scope, posts){
     $scope.posts = [
       {title: 'post 1', upvotes: 2},
       {title: 'post 2', upvotes: 21},
