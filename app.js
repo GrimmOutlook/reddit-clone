@@ -21,6 +21,13 @@ app.config([
       });
 
     $urlRouterProvider.otherwise('home');
+
+    .state(
+      'posts', {
+        url: '/posts/{id}',
+        templateUrl: '/posts.html',
+        controller: 'PostsCtrl'
+      });
   }]);
 
 app.controller('MainCtrl', [
@@ -39,7 +46,11 @@ app.controller('MainCtrl', [
       $scope.posts.push({
         title: $scope.title,
         link: $scope.link,
-        upvotes: 0
+        upvotes: 0,
+        comments: [
+          {author: 'Peter Griffin', body: 'You know what grinds my gears?', upvotes: 0},
+          {author: 'Stewey Griffin', body: 'What the deuce?', upvotes: 0}
+        ]
       });
       $scope.title = '';
       $scope.link = '';
@@ -48,3 +59,21 @@ app.controller('MainCtrl', [
       post.upvotes += 1;
     };
   }]);
+
+app.controller('PostsCtrl', [
+  '$scope',
+  '$stateParams',
+  'posts',
+  function($scope, $stateparams, posts){
+    $scope.posts = posts.posts[$stateParams.id]
+
+  }]);
+
+
+
+
+
+
+
+
+
